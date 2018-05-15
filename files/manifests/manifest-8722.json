@@ -55,6 +55,11 @@
       "value": "[52] Bl."
     }
   ],
+  "rendering": {
+    "@id": "https://iiif.ub.uni-leipzig.de/fcgi-bin/iipsrv.fcgi?iiif=/j2k/0000/0087/0000008722/00000001.jpx/full/800,/0/default.jpg",
+    "label": "Download manifest image",
+    "format": "image/jpeg"
+  },
   "sequences": [
     {
       "@id": "https://iiif.ub.uni-leipzig.de/0000008722/sequence/1",
