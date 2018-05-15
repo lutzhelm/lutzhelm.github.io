@@ -64,6 +64,11 @@
     {
       "@id": "https://iiif.ub.uni-leipzig.de/0000008722/sequence/1",
       "@type": "sc:Sequence",
+      "rendering": {
+        "@id": "https://iiif.ub.uni-leipzig.de/fcgi-bin/iipsrv.fcgi?iiif=/j2k/0000/0087/0000008722/00000001.jpx/full/800,/0/default.jpg",
+        "label": "Download sequence image",
+        "format": "image/jpeg"
+      },
       "canvases": [
         {
           "@id": "https://iiif.ub.uni-leipzig.de/0000008722/canvas/1",
