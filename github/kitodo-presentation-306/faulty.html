@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="//code.jquery.com/jquery-2.2.4.min.js" type="text/javascript" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script><script type="text/javascript">if (typeof jQuery == 'undefined') { document.write(unescape("%3Cscript src='../kitodo-typo3/conf/ext/dlf/Resources/Public/Javascript/jquery-2.2.4.min.js' type='text/javascript'%3E%3C/script%3E"));}</script>
+  </head>
+  <body>
+    <div>
+      <label>IIIF Image</label>
+      <select id="iiif-image" onchange="loadIiifImage();">
+        <option selected>https://api.digitale-sammlungen.de/iiif/image/v2/bsb10081823_00007</option>
+        <option>https://libimages.princeton.edu/loris/pudl0001/4609321/s42/00000003.jp2</option>
+        <option>https://libimages1.princeton.edu/loris/figgy_prod%2Fba%2Fd3%2F23%2Fbad323011fbf4264a1c498637e5c930a%2Fintermediate_file.jp2</option>
+        <option>http://panewsarchive.psu.edu/images/iiif/batch_dlc_himalayan_ver02%2Fdata%2Fsn83030483%2Fprint%2F1789042201%2F0001.jp2</option>
+      </select>
+      <button onclick="loadIiifImage();">Reset Viewer</button>
+      <a id="image-information-link" href="" target="_blank">View Image information</a>
+      </div>
+
+      <div id="tx-dlf-map"></div>
+      <div id="ov_map"></div>
+      <!-- OpenLayer3: See http://openlayers.org/
+          License: https://raw.githubusercontent.com/openlayers/ol3/master/LICENSE.md -->
+      <link type="text/css" rel="stylesheet" href="dlf/lib/OpenLayers/ol3.css">
+      <script type="text/javascript" src="js/glif.min.js"></script>
+      <script type="text/javascript" src="js/ol3-dlf.js"></script>
+      <!-- JavaScript files from PageView plugin of Kitodo.Presentation, see https://github.com/kitodo/kitodo-presentation
+          License: https://github.com/kitodo/kitodo-presentation/blob/master/LICENSE.txt -->
+      <script type="text/javascript" src="js/tx_dlf_utils.js"></script>
+      <script type="text/javascript" src="js/tx_dlf_ol3.js"></script>
+      <script type="text/javascript" src="js/tx_dlf_ol3_styles.js"></script>
+      <script type="text/javascript" src="js/tx_dlf_ol3_source.js"></script>
+      <script type="text/javascript" src="js/tx_dlf_pageview_imagemanipulation_control.js"></script>
+      <script type="text/javascript" src="js/tx_dlf_pageview_fulltext_control.js"></script>
+      <script type="text/javascript" src="js/tx_dlf_pageview.js"></script>
+
+  		<script type="text/javascript">
+        var loadIiifImage = function() {
+          var imageUrl = document.getElementById("iiif-image").value;
+          $("#image-information-link").attr("href", imageUrl);
+          $("#tx-dlf-map").empty();
+          if (dlfUtils.exists(dlfViewer)) {
+  					tx_dlf_viewer = new dlfViewer({
+  						controls: [],
+  						div: "tx-dlf-map",
+  						images: [{"url":imageUrl, "mimetype":"application\/vnd.kitodo.iiif"}],
+  						useInternalProxy: 0
+  					});
+  				}
+        };
+  			window.onload = function() {
+          loadIiifImage();
+  			};
+  		</script>
+  </body>
+</html>
