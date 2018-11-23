@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="//code.jquery.com/jquery-2.2.4.min.js" type="text/javascript" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script><script type="text/javascript">if (typeof jQuery == 'undefined') { document.write(unescape("%3Cscript src='../kitodo-typo3/conf/ext/dlf/Resources/Public/Javascript/jquery-2.2.4.min.js' type='text/javascript'%3E%3C/script%3E"));}</script>
+  </head>
+  <body>
+    <div>
+      <label>Zoomify Image</label>
+      <select id="kitodo-image" onchange="loadKitodoImage();">
+        <option selected>https://fotothek.slub-dresden.de/zooms/df/dk/0010000/df_dk_0010001_4138_1927/ImageProperties.xml</option>
+        <option>http://vips.vtech.fr/cgi-bin/iipsrv.fcgi?zoomify=/mnt/MD1/AD00/plan_CHU-4HD-01/FOND.TIF/ImageProperties.xml</option>
+      </select>
+      <button onclick="loadKitodoImage();">Reset Viewer</button>
+      <a id="image-information-link" href="" target="_blank">View Image information</a>
+      </div>
+
+      <div id="tx-dlf-map"></div>
+      <div id="ov_map"></div>
+      <!-- OpenLayer3: See http://openlayers.org/
+          License: https://raw.githubusercontent.com/openlayers/ol3/master/LICENSE.md -->
+      <script type="text/javascript" src="glif.min.js"></script>
+      <script type="text/javascript" src="ol3-dlf.js"></script>
+      <!-- JavaScript files from PageView plugin of Kitodo.Presentation, see https://github.com/kitodo/kitodo-presentation
+          License: https://github.com/kitodo/kitodo-presentation/blob/master/LICENSE.txt -->
+      <script type="text/javascript" src="tx_dlf_utils-3e6cda8.js"></script>
+      <script type="text/javascript" src="tx_dlf_ol3-3e6cda8.js"></script>
+      <script type="text/javascript" src="tx_dlf_ol3_styles-3e6cda8.js"></script>
+      <script type="text/javascript" src="tx_dlf_ol3_source-3e6cda8.js"></script>
+      <script type="text/javascript" src="tx_dlf_pageview_imagemanipulation_control-3e6cda8.js"></script>
+      <script type="text/javascript" src="tx_dlf_pageview_fulltext_control-3e6cda8.js"></script>
+      <script type="text/javascript" src="tx_dlf_pageview-3e6cda8.js"></script>
+
+  		<script type="text/javascript">
+        var loadKitodoImage = function() {
+          var imageUrl = document.getElementById("kitodo-image").value;
+          $("#image-information-link").attr("href", imageUrl);
+          $("#tx-dlf-map").empty();
+          if (dlfUtils.exists(dlfViewer)) {
+  					tx_dlf_viewer = new dlfViewer({
+  						controls: [],
+  						div: "tx-dlf-map",
+  						images: [{"url":imageUrl, "mimetype":"application\/vnd.kitodo.zoomify"}],
+  						useInternalProxy: 0
+  					});
+  				}
+        };
+  			window.onload = function() {
+          loadKitodoImage();
+  			};
+  		</script>
+  </body>
+</html>
