@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="//code.jquery.com/jquery-2.2.4.min.js" type="text/javascript" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script><script type="text/javascript">if (typeof jQuery == 'undefined') { document.write(unescape("%3Cscript src='../kitodo-typo3/conf/ext/dlf/Resources/Public/Javascript/jquery-2.2.4.min.js' type='text/javascript'%3E%3C/script%3E"));}</script>
+  </head>
+  <body>
+    <div>
+      <div id="tx-dlf-map"></div>
+      <div id="ov_map"></div>
+      <!-- OpenLayer3: See http://openlayers.org/
+          License: https://raw.githubusercontent.com/openlayers/ol3/master/LICENSE.md -->
+      <script type="text/javascript" src="glif.min.js"></script>
+      <script type="text/javascript" src="ol3-dlf.js"></script>
+      <!-- JavaScript files from PageView plugin of Kitodo.Presentation, see https://github.com/kitodo/kitodo-presentation
+          License: https://github.com/kitodo/kitodo-presentation/blob/master/LICENSE.txt -->
+      <script type="text/javascript" src="tx_dlf_utils-resolutions-view-source.js"></script>
+      <script type="text/javascript" src="tx_dlf_ol3-3e6cda8.js"></script>
+      <script type="text/javascript" src="tx_dlf_ol3_styles-3e6cda8.js"></script>
+      <script type="text/javascript" src="tx_dlf_ol3_source-3e6cda8.js"></script>
+      <script type="text/javascript" src="tx_dlf_pageview_imagemanipulation_control-3e6cda8.js"></script>
+      <script type="text/javascript" src="tx_dlf_pageview_fulltext_control-3e6cda8.js"></script>
+      <script type="text/javascript" src="tx_dlf_pageview-3e6cda8.js"></script>
+
+  		<script type="text/javascript">
+  			window.onload = function() {
+          if (dlfUtils.exists(dlfViewer)) {
+  					tx_dlf_viewer = new dlfViewer({
+  						controls: [],
+  						div: "tx-dlf-map",
+  						images: [{"url":"https://iiif.ub.uni-leipzig.de/iiif/j2k/0000/0132/0000013222/00000005.jpx", "mimetype":"application\/vnd.kitodo.iiif"}],
+  						useInternalProxy: 0
+  					});
+  				}
+  			};
+  		</script>
+  </body>
+</html>
